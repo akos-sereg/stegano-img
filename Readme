@@ -1,0 +1,8 @@
+Pre-requisites:
+
+    # apt-get install libgd-dev
+
+Compile sources: 
+
+    $ make
+

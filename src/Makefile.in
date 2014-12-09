@@ -1,0 +1,34 @@
+#
+# $Id: src/Makefile,v 0.2 2005-05-08 21:10:00 sigterm Exp $
+#
+#	all:	compile sources
+#	huffman: huffman encoding
+#	clean:	remove .o files
+#	dclean:	debug clean
+
+PROGRAM = herbivore
+HUFFMAN = huffman
+OBJS = 	$(PROGRAM).o help.o std_encode.o string.o key.o user.o hcore.o std_decode.o math.o \
+    huffman/huffman.c \
+    huffman/code.c \
+    huffman/fdhandle.c \
+    huffman/table.c
+LIBS = -lgd
+
+#all: $(PROGRAM)
+#$(PROGRAM): $(OBJS) $(LIBS)
+all: huffman
+
+huffman: $(OBJS)
+	@cd $(HUFFMAN); make
+	@gcc *.o $(HUFFMAN)/*.o -o $(PROGRAM) $(LIBS)
+
+clean:
+	@rm *.o
+	@rm $(PROGRAM)
+	@cd $(HUFFMAN); make clean
+	
+
+dclean:
+	@rm *.o
+	@rm $(PROGRAM)
