@@ -1,7 +1,7 @@
 stegano-img
 ===========
 
-This command line application allows you to encode text file into PNG images, with - relatively - minimal loss of quality. 
+This command line application allows you to encode text file into PNG images, with - relatively - minimal loss of quality. For each pixel, least significant bits of colour channels (red, green, blue, alpha) are used to store hidden data. Using this algorithm, we can store 4 bits of data in every pixel.
 
 Pre-requisite:
 ```
@@ -29,9 +29,9 @@ akoss@sauron:/media/samsung/share/dev/c/stegano-img$
 
 Usage:
 ```
-# Encode the content of textfile.txt into image.png image, encoded-image.png will hold the secret text
-$ ./herbivore -e image.png -t textfile.txt -o encoded-image.png
+# Encode the content of textfile.txt into image.png image, cipher-image.png will hold the hidden text
+$ ./herbivore -e image.png -t textfile.txt -o cipher-image.png
 
-# Decode text from encoded-image.png - the result (content of the original file, textfile.txt) will be printed to stdout
-$ ./herbivore -d encoded-image.png
+# Decode text from cipher-image.png - the result (content of the original file, textfile.txt) will be printed to stdout
+$ ./herbivore -d cipher-image.png
 ```
